@@ -1,0 +1,8 @@
+# Stop instance 'ins01':
+aws ec2 stop-instances --instance-ids i-0ef39b36b033fffaa
+
+# Modify the policy using awscli that allow you to stop ins02:
+aws iam attach-user-policy --policy-arn arn:aws:iam:250702832602:policy/bondit_ec2_ins02_poweroff --user-name QA
+
+# Remove ins02 stop/start permission, meaning return to previous permissions:
+aws iam detach-user-policy --policy-arn arn:aws:iam::250702832602:policy/bondit_ec2_ins02_poweroff --user-name QA
